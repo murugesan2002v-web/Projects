@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      border: 2px solid #74ebd5;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #74ebd5;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #4bb3a7;
+      color: white;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    #result {
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .correct {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .wrong {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #score {
+      color: #ff5722;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎲 RANDOM NUMBER GAME 🎲</h1>
+    <input id="guessnumber" type="number" placeholder="Enter a number (1-10)">
+    <button onclick="check()">Check</button>
+    <p id="result">You are wrong/correct</p>
+    <p id="score">Score: 10</p> 
+  </div>
+
+  <script>
+    var randomnumber = Math.floor(Math.random() * 10) + 1
+    var score = 10; 
+
+    function check() {
+      var guessnumber = document.getElementById("guessnumber")
+      var result = document.getElementById("result")
+      var scoreDisplay = document.getElementById("score")
+      var enternumber = parseInt(guessnumber.value)
+
+      if (enternumber === randomnumber) {
+        result.textContent = "✅ Correct!"
+        result.className = "correct"
+        alert("🎉 You won!")
+      } else {
+        result.textContent = "❌ Wrong! Try again."
+        result.className = "wrong"
+        score = score - 1
+        scoreDisplay.textContent = "Score: " + score
+        alert("Not correct. Try again!")
+      }
+    }
+  </script>
+</body>
+</html>
